@@ -17,8 +17,8 @@ describe('#msgget', function() {
   });
 
   it('should fail with an error if wrong id', function(done) {
-    msgget('asd', 512, function(e, k) {
-      expect(e).to.be.ok();
+    msgget(345, 666, function(e, k) {
+      expect(e).to.be.a('string');
       done();
     });
   });
