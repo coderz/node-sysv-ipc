@@ -6,6 +6,11 @@
   "scripts": {
     "test": "mocha -R spec test/test.js"
   },
+  "devDependencies": {
+    "node-ftok": "git://github.com/stoke/node-ftok.git",
+    "mocha"    : "*",
+    "expect.js": "*"
+  },
   "repository": "",
   "keywords": [
     "msgget"
