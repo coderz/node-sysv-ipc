@@ -2,7 +2,7 @@
   "targets": [
     {
       "target_name": "msgget",
-      "sources": [ "src/msgget.cc" ]
+      "sources": [ "src/main.cc", "src/msgget.cc" ]
     }
   ]
 }

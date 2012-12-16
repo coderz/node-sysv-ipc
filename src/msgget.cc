@@ -11,16 +11,9 @@
 #include <errno.h>
 
 #include "node_buffer.h"
+#include "binding.h"
 
 using namespace v8;
-
-struct write_req {
-  key_t     key;
-  int       flag;
-  int       value;
-  uv_work_t req;
-  Persistent<Function> cbl;
-};
 
 void msgget_async(uv_work_t *req) {
   struct write_req *orig = (struct write_req *) req->data;
@@ -59,11 +52,3 @@ Handle<Value> node_msgget(const Arguments& args) {
   return scope.Close(Undefined());
 }
 
-void init(Handle<Object> target) {
-  target->Set(
-    String::NewSymbol("msgget"),
-    FunctionTemplate::New(node_msgget)->GetFunction()
-  );
-}
-
-NODE_MODULE(msgget, init)
