@@ -1,0 +1,1 @@
+cmd_Release/obj.target/msgget.node := flock ./Release/linker.lock g++ -shared -pthread -rdynamic -m64  -Wl,-soname=msgget.node -o Release/obj.target/msgget.node -Wl,--start-group Release/obj.target/msgget/src/msgget.o -Wl,--end-group 
