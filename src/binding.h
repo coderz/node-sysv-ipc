@@ -13,6 +13,17 @@ struct write_req {
   Persistent<Function> cbl;
 };
 
+struct send_req {
+  int id;
+  int flags;
+  char *buffer;
+  int buffer_length;
+  int ret;
+  uv_work_t req;
+  Persistent<Function> cbl;
+};
+
 Handle<Value> node_msgget(const Arguments&);
+Handle<Value> node_msgsnd(const Arguments&);
 void init(Handle<Object>);
 #endif
