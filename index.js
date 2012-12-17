@@ -1,1 +1,1 @@
-module.exports = require('./build/Release/msgget').msgget;
+module.exports = require('./build/Release/msgget');

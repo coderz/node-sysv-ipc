@@ -12,8 +12,13 @@ void init(Handle<Object> target) {
   );
 
   target->Set(
-    String::NewSymbol("msgsbd"),
+    String::NewSymbol("msgsnd"),
     FunctionTemplate::New(node_msgsnd)->GetFunction()
+  );
+
+  target->Set(
+    String::NewSymbol("msgrcv"),
+    FunctionTemplate::New(node_msgrcv)->GetFunction()
   );
 }
 

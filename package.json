@@ -4,12 +4,14 @@
   "description": "Node.js native binding to msgget(2)",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -R spec test/test.js"
+    "test": "mocha -R spec test/test.js -t 20000"
   },
   "devDependencies": {
     "node-ftok": "git://github.com/stoke/node-ftok.git",
     "mocha"    : "*",
-    "expect.js": "*"
+    "expect.js": "*",
+    "ref": "*",
+    "ref-struct": "*"
   },
   "repository": "",
   "keywords": [

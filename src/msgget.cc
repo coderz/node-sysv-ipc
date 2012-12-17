@@ -19,12 +19,23 @@ void msgget_async(uv_work_t *req) {
   struct write_req *orig = (struct write_req *) req->data;
 
   orig->value = msgget(orig->key, orig->flag);
+
+  #ifdef _DEBUG
+  std::cout << "-- MSGGET --\n" << "KEY: " << orig->key << "\nFLAG: " << orig->flag << std::endl; // TODO: write a macro for this
+  #endif
+  
+  if (orig->value < 1) {
+    orig->error = strerror(errno);
+    #ifdef _DEBUG
+    std::cout << "ERRNO: " << errno << std::endl;
+    #endif
+  }
 }
 
 void after_mssget_async(uv_work_t *req) {
   struct write_req *orig = (struct write_req *) req->data;
   Handle<Value> err =
-    (orig->value < 0) ? String::New(strerror(errno)) : Null();
+    (orig->value < 0) ? String::New(orig->error) : Null();
 
   Handle<Value> argv[] = { err, Number::New((int) orig->value) };
   orig->cbl->Call(Context::GetCurrent()->Global(), 2, argv);
