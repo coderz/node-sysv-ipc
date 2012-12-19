@@ -1,12 +1,6 @@
-## node-sysv-ipc
 
-Node.js async port of `msgget/msgsnd/msgrcv`
 
-### Install
-
-`npm install node-sysv-ipc`
-
-### Documentation
+<!-- Start lib/ipc.js -->
 
 ## attach(filename)
 
@@ -15,32 +9,32 @@ Attach msgget to a key/filename (ftok)
 Examples:
  ```javascript
  var ipc = new IPC;
- ipc.attach(31337)
+ ipc.attach(31337);
  ```
-
- ---
 
  ```javascript
  var ipc = new IPC;
  ipc.attach(&quot;/tmp/file&quot;);
  ```
 
-### Params:
+### Params: 
 
 * **String|Number** *filename* or key (key_t)
 
 ### Return:
 
-* **undefined**
+* **undefined** 
 
 ## msgsnd(message, callback)
 
 Send a message to a previosuly attached IPC channel
 
 Examples:
+ ```javascript
  var ipc = new IPC;
  ipc.attach(31337)
  ipc.msgsnd(new Buffer([0, 0, 0, 0, 0, 0, 0, 0, 41, 41, 41])); // remember, at least 8 bytes
+ ```
 
 ### Params: 
 
@@ -57,12 +51,14 @@ Examples:
 Receive a message
 
 Examples:
+ ```javascript
  var ipc = new IPC;
  ipc.attach(31337);
  ipc.msgrcv(30, function(e, b) {
    assert(e, 'msgrcv');
    console.log(b.toString());
  });
+ ```
 
 ### Params: 
 
@@ -75,3 +71,6 @@ Examples:
 ### Return:
 
 * **undefined** 
+
+<!-- End lib/ipc.js -->
+
