@@ -14,7 +14,7 @@ describe('#msgget', function() {
       expect(n > -1).to.be.ok();
       msgget.msgget(n, 950, function(e, x) { // 512 = IPC_CREAT
         expect(e).not.to.be.ok();
-        expect(x > 0).to.be.ok();
+        expect(x !== -1).to.be.ok();
         id = x;
         
         done();
