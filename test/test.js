@@ -11,6 +11,7 @@ before(function(done) {
 describe('#msgget', function() {
   it('should call msgget when id exists', function(done) {
     ftok(__dirname + '/taest', 'b'.charCodeAt(0), function(e, n) {
+      expect(n > -1).to.be.ok();
       msgget.msgget(n, 950, function(e, x) { // 512 = IPC_CREAT
         expect(e).not.to.be.ok();
         expect(x > 0).to.be.ok();
@@ -23,7 +24,7 @@ describe('#msgget', function() {
 
   it('should fail with an error if wrong id', function(done) {
     msgget.msgget(31337, 1024, function(e, k) { // 1024 = IPC_EXCL
-      expect(e).to.be.a('string');
+      expect(e).to.be.a(Error);
       done();
     });
   });
@@ -35,7 +36,7 @@ describe('#msgsnd/msgrcv', function() {
       b = b.slice(8);
       
       expect(e).not.to.be.ok();
-      expect(b).to.be.an(Buffer);
+      expect(b).to.be.a(Buffer);
       expect(b.toString()).to.be('nexgay');
       done();
     });

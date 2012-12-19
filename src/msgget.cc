@@ -34,10 +34,15 @@ void msgget_async(uv_work_t *req) {
 
 void after_mssget_async(uv_work_t *req) {
   struct write_req *orig = (struct write_req *) req->data;
-  Handle<Value> err =
-    (orig->value < 0) ? String::New(orig->error) : Null();
+  Handle<Value> err;
+  
+  if(orig->value < 0) 
+    err = Exception::Error(String::New(orig->error));
+  else
+    err = Null();
 
   Handle<Value> argv[] = { err, Number::New((int) orig->value) };
+  
   orig->cbl->Call(Context::GetCurrent()->Global(), 2, argv);
 }
 
