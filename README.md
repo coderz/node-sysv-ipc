@@ -1,3 +1,8 @@
+node-sysv-ipc
+=============
+
+Node.js async interface to SYS-V IPC
+
 ## attach(filename)
 
 Attach msgget to a key/filename (ftok)
