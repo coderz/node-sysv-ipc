@@ -3,20 +3,26 @@
   "version": "0.0.0",
   "description": "Node.js native binding to msgget(2)",
   "main": "index.js",
+  
   "scripts": {
-    "test": "mocha -R spec test/test.js -t 20000"
+    "test": "mocha -R spec test/test.js test/test-class.js -t 20000"
   },
+  
   "devDependencies": {
-    "node-ftok": "git://github.com/stoke/node-ftok.git",
+    "node-ftok": "*",
     "mocha"    : "*",
     "expect.js": "*",
+    "node-buffy": "*",
     "ref": "*",
     "ref-struct": "*"
   },
+
   "repository": "",
+  
   "keywords": [
     "msgget"
   ],
+  
   "author": "yawnt <yawn.localhost@gmail.com>",
   "license": "MIT"
 }

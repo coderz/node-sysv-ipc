@@ -1,4 +1,6 @@
 node_modules
 *.swp
 build
-test/taest
+test/test
+docs
+docs.md

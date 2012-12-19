@@ -1,16 +1,16 @@
-var msgget = require('../'),
+var msgget = require('../').native,
     ftok   = require('node-ftok'),
     expect = require('expect.js');
 
 var id;
 
 before(function(done) {
-  require('fs').open(__dirname + '/taest', 'w', done);
+  require('fs').open(__dirname + '/test', 'w', done);
 });
 
 describe('#msgget', function() {
   it('should call msgget when id exists', function(done) {
-    ftok(__dirname + '/taest', 'b'.charCodeAt(0), function(e, n) {
+    ftok(__dirname + '/test', 'b'.charCodeAt(0), function(e, n) {
       expect(n > -1).to.be.ok();
       msgget.msgget(n, 950, function(e, x) { // 512 = IPC_CREAT
         expect(e).not.to.be.ok();
@@ -42,7 +42,7 @@ describe('#msgsnd/msgrcv', function() {
     });
     
     var b = new Buffer(8 + 6);
-    // set mtime to 1
+    // set mtype to 1
     b.writeInt32LE(0, 0)
     b.writeInt32LE(1, 4);
     // -->
