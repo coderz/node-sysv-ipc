@@ -1,7 +1,3 @@
-
-
-<!-- Start lib/ipc.js -->
-
 ## attach(filename)
 
 Attach msgget to a key/filename (ftok)
@@ -14,7 +10,7 @@ Examples:
 
  ```javascript
  var ipc = new IPC;
- ipc.attach(&quot;/tmp/file&quot;);
+ ipc.attach("/tmp/file");
  ```
 
 ### Params: 
@@ -71,6 +67,3 @@ Examples:
 ### Return:
 
 * **undefined** 
-
-<!-- End lib/ipc.js -->
-
