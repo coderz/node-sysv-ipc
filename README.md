@@ -15,7 +15,8 @@ Attach msgget to a key/filename (ftok)
 Examples:
  ```javascript
  var ipc = new IPC;
- ipc.attach(31337)```
+ ipc.attach(31337)
+ ```
 
  ---
 
